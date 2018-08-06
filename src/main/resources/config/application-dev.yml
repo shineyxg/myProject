@@ -1,0 +1,43 @@
+
+spring:
+  main:
+    banner-mode: off
+  datasource:
+    url: jdbc:mysql://localhost:3306/storage?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useUnicode=true&useSSL=false&autoReconnect=true
+    username: root
+    password: shining
+    driver-class-name: com.mysql.jdbc.Driver
+    druid:
+      initial-size: 1
+      min-idle: 1
+      max-active: 20
+      test-on-borrow: true
+      stat-view-servlet:
+        allow: true
+    type: com.alibaba.druid.pool.DruidDataSource
+
+server:
+  port: 8182
+
+#  mabatis
+mybatis:
+  type-aliases-package: com.shine.entity.domain
+  mapper-locations: classpath:dao/mapper/*.xml
+
+
+# mapper
+mapper:
+  mappers:
+    - com.shine.common.util.MyMapper
+  not-empty: false
+  identity: MYSQL
+
+# pagehelper
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+
+
+
